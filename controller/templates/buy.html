@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css')}}">
+</head>
+<body>
+<div id="main">
+ <div style="border: 2px solid; width: 50%; margin:auto;">
+     <br>
+    <form action="/delete" method="post">
+        <table align="center" border="1" cellpadding="15" style="border-collapse: collapse; text-align: center;">
+
+        <tr>
+            <th></th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Category</th>
+        </tr>
+        {% for b in books:%}
+        <tr>
+            <td><input type="checkbox" name="{{b.id}}"></td>
+            <td>{{b.name}}</td>
+            <td>{{b.author_name}}</td>
+            <td>{{b.category_name}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4"><input type="submit" value="Buy"></td>
+        </tr>
+    </table>
+    </form>
+    <br>
+    <br>
+    <div style="text-align: center">
+        <a href="/customer_page" >Home</a>
+    </div>
+     <a href="/logout">logout</a>
+     <br>
+ </div>
+</div>
+</body>
+</html>
