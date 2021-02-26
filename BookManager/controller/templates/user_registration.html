@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User_registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css')}}">
+</head>
+<body onload="userregornot({{ dup }})">
+<div id="main">
+    <h2>REGISTER!!!</h2>
+
+    {%if flag==0:%}
+    <form action="/user_registration" method="post">
+        <table align="center" cellpadding="5">
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="text" name="username" required=""></td>
+            </tr>
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="password" name="password" required=""></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+                <td><button onclick="window.location.href='/login'">Back</button></td>
+            </tr>
+
+        </table>
+    </form>
+<!--    <div id="dupuser" style="visibility: hidden;">Username already exist. Please try with another username</div>-->
+<!--    <div id="sucuser" style="visibility: hidden;">User added successfully!!!!</div>-->
+    {%else:%}
+    <form action="/admin_registration" method="post">
+        <table align="center" cellpadding="5">
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="text" name="username" required=""></td>
+            </tr>
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="password" name="password" required=""></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" ></td>
+                <td><button onclick="window.location.href='/admin_page'">Back</button></td>
+            </tr>
+        </table>
+    </form>
+    {%endif%}
+    <div id="dupuser" style="visibility: hidden;">Username already exist. Please try with another username</div>
+    <br>
+<!--    <button onclick="goBack()">Back</button>-->
+
+</div>
+<script type="text/javascript">
+    function userregornot(dup)
+    {
+<!--        document.getElementById("dupuser").innerHTML = "demoo";-->
+        if(dup==0)
+        {
+            document.getElementById("dupuser").style.visibility="hidden";
+<!--            document.getElementById("demo").innerHTML = {{ flag }};-->
+        }
+        else if(dup==1)
+        {
+            document.getElementById("dupuser").style.visibility="visible";
+<!--            document.getElementById("demo").innerHTML = {{ flag }};-->
+        }
+
+    }
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

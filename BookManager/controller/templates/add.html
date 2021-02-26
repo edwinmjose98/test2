@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css')}}">
+</head>
+<body>
+<div id="main">
+    <div style="border: 2px solid; width: 50%; margin:auto;">
+        <br>
+        <form action="/add" method="post">
+        <table style="margin:auto" cellpadding="10">
+            <tr>
+                <td><label>Name</label></td>
+                <td><input type="text" name="name" required></td>
+            </tr>
+            <tr>
+                <td><label>Category</label></td>
+                <td><input type="text" name="category" required></td>
+            </tr>
+            <tr>
+                <td><label>Author</label></td>
+                <td><input type="text" name="author" required></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="add"></td>
+                <td><input type="reset" value="reset"></td>
+            </tr>
+
+        </table>
+
+        </form>
+        <br>
+
+        <div style="text-align: center">
+            <a href="/admin_page" >Back</a>
+         </div>
+        <a href="/logout">logout</a>
+        <br>
+    </div>
+</div>
+</body>
+</html>

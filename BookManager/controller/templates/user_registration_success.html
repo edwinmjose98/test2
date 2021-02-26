@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Success</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css')}}">
+</head>
+<body onload="display_success({{ flag }})">
+<div id="main">
+    <h3>Registration success</h3>
+
+        <div id = "user" style="visibility: hidden">
+        <a href="/login">Click here to go back to login</a>
+        </div>
+
+        <div id = "admin" style="visibility: hidden">
+            <a href="/admin_page">Go back to home page</a>
+            <br>
+            <br>
+            <a href="/logout">Logout </a>
+        </div>
+        <div id="demo"></div>
+
+
+<script type="text/javascript">
+    function display_success(flag)
+    {
+<!--        document.getElementById("demo").innerHTML = "demoo";-->
+        if(flag==0)
+        {
+            document.getElementById("user").style.visibility="visible";
+<!--            document.getElementById("demo").innerHTML = {{ flag }};-->
+        }
+        else
+        {
+            document.getElementById("admin").style.visibility="visible";
+<!--            document.getElementById("demo").innerHTML = {{ flag }};-->
+        }
+
+    }
+</script>
+</div>
+</body>
+</html>

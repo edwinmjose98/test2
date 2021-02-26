@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css')}}">
+</head>
+<body>
+<div id="main">
+    <table border="1" cellpadding="15" style="margin-left:auto;margin-right:auto;">
+        <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Count</th>
+        </tr>
+        {%for b in books:%}
+        <tr>
+            <th>{{b.name}}</th>
+            <th>{{b.author_name}}</th>
+            <th>{{b.category_name}}</th>
+            <th>{{b.count}}</th>
+        </tr>
+        {%endfor%}
+    </table>
+    <br>
+    <button onclick="window.location.href='/add'">ADD A BOOK</button>
+    <br>
+    <br>
+    <button onclick="window.location.href='/admin_registration'">REGISTER NEW ADMIN</button>
+    <br>
+    <br>
+    <a href="/logout" >Logout</a>
+</div>
+</body>
+</html>
