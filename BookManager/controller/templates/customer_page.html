@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css')}}">
+
+</head>
+<body>
+<div id="main">
+    <div id="user1">
+        <h2>Search books by...</h2>
+        <button id="cat" onclick="display(this.id)" >Category</button>
+        <button id="aut" onclick="display(this.id)" >Author</button>
+        <button id="book" onclick="display(this.id)" >Book Name</button>
+        <div id="vis" style="visibility: hidden; ">
+            <form action="/buy" method="POST">
+                <input type="text" id="search" placeholder="Enter category name..." name="category" required>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+    <br>
+    <div id="user2">
+        <div id="c" style="visibility: hidden; position:absolute;left:23cm" >
+            <table border="1" cellpadding="15" style="margin-left:auto;margin-right:auto;border-collapse:collapse;">
+                <tr>
+                    <th>CATEGORIES</th>
+                </tr>
+                {%for b in c:%}
+                <tr>
+                    <td>{{b.category_name}}</td>
+                 </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div id="a" style="visibility: hidden; position:absolute; left:23cm">
+            <table border="1" cellpadding="15"  style="margin-left:auto;margin-right:auto;border-collapse:collapse;">
+                <tr>
+                    <th>AUTHORS</th>
+                </tr>
+                {%for b in a:%}
+                <tr>
+                    <td>{{b.author_name}}</td>
+                 </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        function display(id)
+        {
+            if(id == "aut")
+            {
+                document.getElementById("search").name="author"
+                document.getElementById("search").placeholder="Enter author name..."
+                document.getElementById("vis").style.visibility="visible"
+                document.getElementById("a").style.visibility="visible"
+                document.getElementById("c").style.visibility="hidden"
+
+
+            }
+            if(id == "cat")
+            {
+                document.getElementById("search").name="category"
+                document.getElementById("search").placeholder="Enter category name..."
+                document.getElementById("vis").style.visibility="visible"
+                document.getElementById("c").style.visibility="visible"
+                document.getElementById("a").style.visibility="hidden"
+            }
+            if(id=="book")
+            {
+            document.getElementById("search").name="bookname"
+            document.getElementById("search").placeholder="Enter Book name..."
+            document.getElementById("vis").style.visibility="visible"
+            document.getElementById("c").style.visibility="hidden"
+            document.getElementById("a").style.visibility="hidden"
+            }
+        }
+    </script>
+    {%if b!=0:%}
+        <div style="position:absolute" >
+<!--            <h2>Books By Category</h2>-->
+            <img title ="Books By Category" src="/plot.png" alt="my plot">
+        </div>
+    {%endif%}
+
+    <button style="position:relative;left:20cm;padding: 15px 32px;" onclick="window.location.href='/logout'" >Logout</button>
+
+
+</div>
+</body>
+</html>
